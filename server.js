@@ -1,5 +1,9 @@
 const express = require('express');
+const { env } = require('process');
 const app = express();
+require('dotenv').config()
+const port  = process.env.port 
+
 const http = require('http').createServer(app)
 app.use(express.static(__dirname + '/public'))
 
@@ -8,7 +12,7 @@ app.get('/',(req,res)=>{
     res.sendFile(__dirname + '/index.html')
 })
 
-http.listen(3000,()=>{
+http.listen(port,()=>{
     console.log('listining on 3000')
 })
 
